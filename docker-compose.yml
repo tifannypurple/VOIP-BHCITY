@@ -1,6 +1,6 @@
 services:
   rust-mumble:
-    container_name: rust-mumble
+    container_name: rust-mumble-bh-city
     build:
       context: .
       dockerfile: Dockerfile
