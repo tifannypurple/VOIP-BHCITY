@@ -86,7 +86,7 @@ async fn clean_run(state: &ServerState) -> Result<(), MumbleError> {
         if let Err(e) = state.reset_client_crypt(&client).await {
             tracing::error!("failed to send crypt setup for {}: {:?}", e, session_id);
         } else {
-            tracing::debug!("Requesting {} crypt be reset", client);
+            tracing::info!("Requesting {} crypt be reset", client);
         }
     }
 

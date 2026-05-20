@@ -1,15 +1,20 @@
 services:
   rust-mumble:
-    container_name: rust-mumble-bh-city
+    container_name: rust-mumble
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "30121:30120"
-      - "64739:64738/udp"
-      - "64739:64738/tcp"
-      - "8081:8080"
+      - "30120:30120"
+      - "64738:64738/udp"
+      - "64738:64738/tcp"
+      - "8080:8080"
     environment:
       - RUST_LOG=info
     command: ["/rust-mumble", "--listen", "0.0.0.0:30120"]
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"

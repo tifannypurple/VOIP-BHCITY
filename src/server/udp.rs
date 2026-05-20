@@ -135,7 +135,7 @@ async fn handle_packet(
                     let restart_crypt = restart_crypt || Instant::now().duration_since(last_good).as_secs() > 5;
 
                     if restart_crypt {
-                        tracing::debug!("client {} udp decrypt error: {}, reset crypt setup", client, err);
+                        tracing::error!("client {} udp decrypt error: {}, reset crypt setup", client, err);
 
                         if let Err(e) = state.reset_client_crypt(&client).await {
                             tracing::error!("failed to send crypt setup: {:?}", e);
